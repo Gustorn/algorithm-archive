@@ -104,8 +104,8 @@ int main() {
   std::uniform_real_distribution<double> distribution(0.0, 1.0);
 
   std::array<c64, 64> initial;
-  std::generate(
-      begin(initial), end(initial), [&] { return distribution(rng); });
+  std::generate(begin(initial), end(initial),
+                [&] { return distribution(rng); });
 
   auto recursive = initial;
   auto iterative = initial;

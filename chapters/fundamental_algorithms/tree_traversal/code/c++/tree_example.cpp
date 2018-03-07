@@ -66,9 +66,8 @@ node create_tree(size_t num_row, size_t num_child) {
   }
 
   std::vector<node> vec;
-  std::generate_n(std::back_inserter(vec), num_child, [&] {
-    return create_node(num_row - 1, num_child);
-  });
+  std::generate_n(std::back_inserter(vec), num_child,
+                  [&] { return create_node(num_row - 1, num_child); });
 
   return node{std::move(vec), num_row};
 }

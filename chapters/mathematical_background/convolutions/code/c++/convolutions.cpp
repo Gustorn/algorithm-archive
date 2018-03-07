@@ -61,13 +61,8 @@ void ifft(Iter start, Iter_end end) {
 // This section is a part of the algorithm
 
 template <typename Iter, typename Iter_end>
-void conv(
-    Iter signal1start,
-    Iter_end signal1end,
-    Iter signal2start,
-    Iter_end signal2end,
-    Iter outstart,
-    Iter_end outend) {
+void conv(Iter signal1start, Iter_end signal1end, Iter signal2start,
+          Iter_end signal2end, Iter outstart, Iter_end outend) {
 
   auto size1 = (signal1end - signal1start);
   auto size2 = (signal2end - signal2start);
@@ -85,13 +80,8 @@ void conv(
 }
 
 template <typename Iter, typename Iter_end>
-void conv_fft(
-    Iter signal1start,
-    Iter_end signal1end,
-    Iter signal2start,
-    Iter_end signal2end,
-    Iter outstart,
-    Iter_end outend) {
+void conv_fft(Iter signal1start, Iter_end signal1end, Iter signal2start,
+              Iter_end signal2end, Iter outstart, Iter_end outend) {
   fft(signal1start, signal1end);
   fft(signal2start, signal2end);
 
@@ -129,20 +119,10 @@ int main() {
     }
   }
 
-  conv(
-      signal1.begin(),
-      signal1.end(),
-      signal2.begin(),
-      signal2.end(),
-      out1.begin(),
-      out1.end());
-  conv_fft(
-      signal3.begin(),
-      signal3.end(),
-      signal4.begin(),
-      signal4.end(),
-      out2.begin(),
-      out2.end());
+  conv(signal1.begin(), signal1.end(), signal2.begin(), signal2.end(),
+       out1.begin(), out1.end());
+  conv_fft(signal3.begin(), signal3.end(), signal4.begin(), signal4.end(),
+           out2.begin(), out2.end());
 
   std::cout << std::right << std::setw(16) << "i" << std::setw(16)
             << "subtracted" << '\n';
